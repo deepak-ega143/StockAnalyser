@@ -1,0 +1,3 @@
+class StockDetails extends SignUp{
+      
+}
