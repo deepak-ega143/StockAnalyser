@@ -72,45 +72,61 @@ class SignUp{
       return;
     }
 
-    System.out.println("Enter your Email id or Mobile Number: ");
-    String contact = sc.nextLine();
+    while(true)
+    {
+      System.out.println("Enter your Email id or Mobile Number: ");
+      String contact = sc.nextLine();
 
-    if(isValidEmail(contact))
-    {
-      email = contact;
-      System.out.println("OTP sent to eamil: "+email);
-    }
-    else if(isValidMobileNo(contact))
-    {
-      mobileNo = contact;
-      System.out.println("OTP sent to mobile number: "+mobileNo);
-    }
-    else 
-    {
-      System.out.println("Invalid contact. Please enter a valid email or mobile number.");
-      return;
+      if(isValidEmail(contact))
+      {
+        email = contact;
+        System.out.println("OTP sent to eamil: "+email);
+        break;
+      }
+      else if(isValidMobileNo(contact))
+      {
+        mobileNo = contact;
+        System.out.println("OTP sent to mobile number: "+mobileNo);
+        break;
+      }
+      else 
+      {
+        System.out.println("Please enter a valid email or mobile number.");
+      }
     }
 
     otp = generateOTP();
     System.out.println("Your OTP: "+otp);
 
-    System.out.print("Enter the OTP: ");
-    int enteredotp = sc.nextInt();
-    sc.nextLine();
-
-    if(enteredotp != otp)
+    while (true) 
     {
-      System.out.println("Invalid OTP. Registration failed...!");
-      return;
+      System.out.print("Enter the OTP: ");
+      int enteredotp = sc.nextInt();
+      sc.nextLine();
+
+      if(enteredotp == otp)
+      {
+        break;
+      }
+      else
+      {
+        System.out.println("Invalid OTP. Please Try again.");
+      }
     }
 
-    System.out.print("Enter your password (at least 8 characters): ");
-    password = sc.nextLine();
-
-    if(!isValidPass(password))
+    while(true)
     {
-      System.out.println("Password should be at least 8 characters long.");
-      return;
+      System.out.print("Enter your password (at least 8 characters): ");
+      password = sc.nextLine();
+
+      if(isValidPass(password))
+      {
+        break;
+      }
+      else
+      {
+        System.out.println("Password must be at least 8 characters long.Please Try again...");
+      }
     }
 
     System.out.println("Registration Successful...!");
