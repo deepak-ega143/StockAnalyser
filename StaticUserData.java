@@ -54,4 +54,13 @@ class StaticUserData {
       }
     }
   }
+  public static void UpdateAccountBalance(int addBalance, String username) {
+    for (String[] strings : userData) {
+      if (strings[3].equals(username)) {
+        int balance = Integer.parseInt(strings[4]);
+        int finalPrice = balance + addBalance;
+        strings[4] = finalPrice + "";
+      }
+    }
+  }
 }

@@ -90,6 +90,10 @@ class Main {
         case 5:
           ProfitsAndLosses.profitOrLoss(LoginCredentials.username, false);
           break;
+        case 6:
+          ShowAccountDetails.printAccountFunctionalities();
+          int accountDetailsInput = sc.nextInt();
+          ShowAccountDetails.printUserData(accountDetailsInput);
         default:
           break;
       }
