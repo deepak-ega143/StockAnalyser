@@ -141,6 +141,8 @@ class SignUp{
       System.out.println("Registered mobile number: "+mobileNo);
     }
 
+    String finalContact = (email != null) ? email : mobileNo;
+    StaticUserData.addUser(finalContact,password,username);
   }
 }
 

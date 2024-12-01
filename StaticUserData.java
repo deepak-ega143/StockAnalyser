@@ -10,6 +10,8 @@ class StaticUserData {
       { "vishal.kumar@example.com", "Vishal@2022", "9123409876", "vishal_kumar", "10000", "Bajaj Finance",
           "Adani Enterprises" }
   };
+
+  public static int userCount = 5;
   // static String[][] rahulStocks = { { " Tata Consultancy Services", "3" }, {
   // "Reliance Industries", "2" } };
   // static String[][] meenaStocks = { { " Infosys", "2" }, { "ITC", "3" } };
@@ -39,6 +41,24 @@ class StaticUserData {
     return "";
   }
 
+  public static void addUser(String finalcontact,String password,String username)
+  {
+    if(userCount >= userData.length)
+    {
+      resizeUserData();
+    }
+    userData[userCount][0] = finalcontact;
+    userData[userCount][1] = password;
+    userData[userCount][2] = username;
+    userCount++;
+  }
+  public static void resizeUserData(){
+    String[][] newUserData = new String[userData.length * 2][7];
+    for (int i = 0; i < userData.length; i++) {
+      newUserData[i] = userData[i];
+    }
+    userData = newUserData;
+  }
   public static String[][] updateUserData(String[][] newUserData) {
     StaticUserData.userData = newUserData;
     return StaticUserData.userData;
