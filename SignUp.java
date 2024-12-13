@@ -74,24 +74,17 @@ class SignUp{
 
     while(true)
     {
-      System.out.println("Enter your Email id or Mobile Number: ");
-      String contact = sc.nextLine();
+      System.out.println("Enter your Email id: ");
+      email = sc.nextLine();
 
-      if(isValidEmail(contact))
+      if(isValidEmail(email))
       {
-        email = contact;
         System.out.println("OTP sent to eamil: "+email);
-        break;
-      }
-      else if(isValidMobileNo(contact))
-      {
-        mobileNo = contact;
-        System.out.println("OTP sent to mobile number: "+mobileNo);
         break;
       }
       else 
       {
-        System.out.println("Please enter a valid email or mobile number.");
+        System.out.println("Please enter a valid email.");
       }
     }
 
@@ -114,6 +107,21 @@ class SignUp{
       }
     }
 
+    while (true) {
+      System.out.print("Enter your Mobile Number: ");
+      mobileNo = sc.nextLine();
+
+      if(isValidMobileNo(mobileNo))
+      {
+        System.out.println("Mobile number registered: "+mobileNo);
+        break;
+      }
+      else
+      {
+        System.out.println("Please enter a valid 10-digit mobile number.");
+      }
+    }
+
     while(true)
     {
       System.out.print("Enter your password (at least 8 characters): ");
@@ -130,19 +138,13 @@ class SignUp{
     }
 
     System.out.println("Registration Successful...!");
-
     System.out.println("Username: "+username);
-    if(email != null)
-    {
-      System.out.println("Registered email: "+ email);
-    }
-    else 
-    {
-      System.out.println("Registered mobile number: "+mobileNo);
-    }
+    System.out.println("Registered Email: "+email);
+    System.out.println("Registered Mobile Number: "+mobileNo);
+    
+    StaticUserData.addUser(email,password,mobileNo,username);
 
-    String finalContact = (email != null) ? email : mobileNo;
-    StaticUserData.addUser(finalContact,password,username);
+    StaticUserData.displayUserData();
   }
 }
 

@@ -41,15 +41,19 @@ class StaticUserData {
     return "";
   }
 
-  public static void addUser(String finalcontact,String password,String username)
+  public static void addUser(String email,String password,String mobileNo,String username)
   {
     if(userCount >= userData.length)
     {
       resizeUserData();
     }
-    userData[userCount][0] = finalcontact;
+    userData[userCount][0] = email;
     userData[userCount][1] = password;
-    userData[userCount][2] = username;
+    userData[userCount][2] = mobileNo;
+    userData[userCount][3] = username;
+    userData[userCount][4] = "0";
+    userData[userCount][5] = "null";
+    userData[userCount][6] = "null";
     userCount++;
   }
   public static void resizeUserData(){
@@ -58,6 +62,22 @@ class StaticUserData {
       newUserData[i] = userData[i];
     }
     userData = newUserData;
+  }
+  public static void displayUserData() 
+  {
+    System.out.println("--- Registered Users ---");
+    for(int i=0;i<userCount;i++)
+    {
+      System.out.println("User "+(i+1) + ":");
+      System.out.println("Email: "+userData[i][0]);
+      System.out.println("Password: "+userData[i][1]);
+      System.out.println("MobileNo: "+userData[i][2]);
+      System.out.println("Username: "+userData[i][3]);
+      System.out.println("Balance: "+userData[i][4]);
+      System.out.println("Company: "+userData[i][5]);
+      System.out.println("Stock: "+userData[i][6]);
+      System.out.println("------------------------");
+    }
   }
   public static String[][] updateUserData(String[][] newUserData) {
     StaticUserData.userData = newUserData;

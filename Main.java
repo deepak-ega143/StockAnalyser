@@ -98,5 +98,10 @@ class Main {
           break;
       }
     }
+    else if(n==2)
+    {
+      SignUp signup = new SignUp();
+      signup.signUP();
+    }
   }
 }
