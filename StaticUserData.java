@@ -78,6 +78,16 @@ class StaticUserData {
       System.out.println("Stock: "+userData[i][6]);
       System.out.println("------------------------");
     }
+    System.out.println("\n--- Complete User Data Array ---");
+    for(int i=0;i<userCount;i++)
+    {
+      System.out.print("User " + (i+1) + ":");
+      for(int j=0;j<userData[i].length;j++)
+      {
+        System.out.print(userData[i][j] + " | ");
+      }
+      System.out.println();
+    }
   }
   public static String[][] updateUserData(String[][] newUserData) {
     StaticUserData.userData = newUserData;

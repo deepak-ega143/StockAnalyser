@@ -1,11 +1,21 @@
 import java.util.*;
 
 class Main {
+  static final String def = "\u001b[0;1m";
+  static final String blink = "\u001b[5m";
+  static final String red =  "\u001b[31;1m";
+  static final String green = "\u001b[32;1m";
+  static final String yellow = "\u001b[33;1m";
+  static final String blue = "\u001b[34;1m";
+  static final String purpe = "\u001b[35;1m";
+  static final String skblue = "\u001b[36;1m";
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
+    System.out.println(green + "          ********************  Welcome to STOCK ANALYZER  ********************          " +def);
     System.out.println("Enter 1 for Login");
     System.out.println("Enter 2 for SignUp");
     System.out.println("Enter 3 for DeleteAccount");
+    System.out.println("Enter your choice: " + def);
     int n = sc.nextInt();
     if (n == 1) {
       boolean vaildUser = false;
@@ -49,9 +59,9 @@ class Main {
             stockSelection++;
             System.out.println();
           }
-          System.out.println("IF YOU WANT TO BUY ANY STOCKS ENTER THE NUMBER OF THE STOCKS YOU WANT TO BUY.");
+          System.out.println(yellow+"HOW MANY STOCKS WOULD YOU LIKE TO BUY ? PLEASE ENTER THE QUANTITY BELOW:"+def);
           int numberOfStocks = sc.nextInt();
-          System.out.println("ENTER THE NUMBER OF THE SPECIFIC STOCKS.");
+          System.out.println(blink+purpe+"PLEASE ENTER THE INDEX OF THE STOCKS YOU WOULD LIKE TO PURCHASE:"+def);
           int[] arrayOfSelectionStocks = new int[numberOfStocks];
           for (int i = 0; i < numberOfStocks; i++) {
             arrayOfSelectionStocks[i] = sc.nextInt();

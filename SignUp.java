@@ -5,10 +5,19 @@ class SignUp{
   private String email;
   private String password;
   private int otp;
+
+  static final String def = "\u001b[0;1m";
+  static final String blink = "\u001b[5m";
+  static final String red =  "\u001b[31;1m";
+  static final String green = "\u001b[32;1m";
+  static final String yellow = "\u001b[33;1m";
+  static final String blue = "\u001b[34;1m";
+  static final String purpe = "\u001b[35;1m";
+  static final String skblue = "\u001b[36;1m";
   private int generateOTP() 
   {
     Random randotp = new Random();
-    return 100000 + randotp.nextInt(900000);
+    return 1000 + randotp.nextInt(9000);
   }
   
   public boolean isValidMobileNo(String mobileNo) 
@@ -23,7 +32,6 @@ class SignUp{
           return false;
         }     
       }
-
       return true;
     }
     else
@@ -62,14 +70,20 @@ class SignUp{
   public void signUP() 
   {
     Scanner sc = new Scanner(System.in);
-
-    System.out.print("Enter your username: ");
-    username = sc.nextLine();
-
-    if(username.isEmpty())
+    
+    while(true)
     {
-      System.out.println("Username cannot be empty.");
-      return;
+      System.out.print("Enter your username: ");
+      username = sc.nextLine().trim();
+
+      if(username.isEmpty())
+      {
+        System.out.println(red+"Please enter a username. It cannot be empty."+def);
+      }
+      else
+      {
+        break;
+      }
     }
 
     while(true)
@@ -84,7 +98,7 @@ class SignUp{
       }
       else 
       {
-        System.out.println("Please enter a valid email.");
+        System.out.println("That doesn't look like a valid email.Please try again.");
       }
     }
 
@@ -103,7 +117,7 @@ class SignUp{
       }
       else
       {
-        System.out.println("Invalid OTP. Please Try again.");
+        System.out.println("The OTP you entered is incorrect. Please check and try again.");
       }
     }
 
@@ -118,7 +132,7 @@ class SignUp{
       }
       else
       {
-        System.out.println("Please enter a valid 10-digit mobile number.");
+        System.out.println("Please enter a valid mobile number with exactly 10 digits.");
       }
     }
 
@@ -133,18 +147,20 @@ class SignUp{
       }
       else
       {
-        System.out.println("Password must be at least 8 characters long.Please Try again...");
+        System.out.println("Your Password must be at least 8 characters long.Please Try again.");
       }
     }
 
-    System.out.println("Registration Successful...!");
+    System.out.println(green +"You're all set! Registration Successful...!"+ def);
+
+    System.out.println(yellow+"\nHere are your registered details:"+def);
     System.out.println("Username: "+username);
-    System.out.println("Registered Email: "+email);
-    System.out.println("Registered Mobile Number: "+mobileNo);
+    System.out.println("Email: "+email);
+    System.out.println("Mobile Number: "+mobileNo);
     
     StaticUserData.addUser(email,password,mobileNo,username);
 
-    StaticUserData.displayUserData();
+    // StaticUserData.displayUserData();
   }
 }
 
